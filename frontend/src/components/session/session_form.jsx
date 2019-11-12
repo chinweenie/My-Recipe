@@ -91,7 +91,7 @@ class SessionForm extends React.Component {
         if (formType === 'Login') {
             sessionFormHeader = (
                 <header className="form-header">
-                    <h1 className="form-heading">your recipes are waiting.</h1>
+                    <h1 className="form-heading">Your recipes are waiting.</h1>
                     <p className="form-bio">Sign in to get personalized recipe recommendations, follow authors and recipes you love, and customize your grocer shopping list!</p>
                 </header>
             );
