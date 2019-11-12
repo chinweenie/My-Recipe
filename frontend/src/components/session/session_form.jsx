@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { email: "", username: "", password: "" };
+        this.state = { email: "", fullname: "", password: "", password2: ""};
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClose = this.handleClose.bind(this);
@@ -14,8 +14,8 @@ class SessionForm extends React.Component {
     handleDemo(e) {
         e.preventDefault();
         this.state = {
-            username: "",
             email: "",
+            fullname: "",
             password: ""
         };
         const email = 'admin@my_recipe.com'.split('');
@@ -133,10 +133,10 @@ class SessionForm extends React.Component {
 
         } else {
             sessionFormHeader = (
-                <heading className="signup-form-header">
+                <div className="signup-form-header">
                     <h1 className="form-heading">Join My Recipe.</h1>
                     <p className="form-bio">Create an account to receive great recipes in your inbox, personalize your grocer shopping list, and follow authors that you love.</p>
-                </heading>
+                </div>
             );
 
             optionalInputField = (
@@ -144,9 +144,9 @@ class SessionForm extends React.Component {
                     <input
                         className="login-input"
                         type="text"
-                        value={this.state.name}
-                        id="name"
-                        onChange={this.update('name')}
+                        value={this.state.fullname}
+                        id="fullname"
+                        onChange={this.update('fullname')}
                         placeholder="Fullname"
                         required />
                 </div>
