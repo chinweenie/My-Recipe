@@ -4,21 +4,21 @@ import { withRouter } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { email: "", fullname: "", password: "", password2: ""};
+        this.state = { email: "", password: "", password2: ""};
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
+        this.handleDemoPassword = this.handleDemoPassword.bind(this);
     }
 
     handleDemo(e) {
         e.preventDefault();
-        this.state = {
+        this.state = ({
             email: "",
-            fullname: "",
             password: ""
-        };
-        const email = 'admin@my_recipe.com'.split('');
+        });
+        const email = 'admin@myrecipe.com'.split('');
         this.handleDemoUsername(email);
     }
 
@@ -139,18 +139,18 @@ class SessionForm extends React.Component {
                 </div>
             );
 
-            optionalInputField = (
-                <div className="login">
-                    <input
-                        className="login-input"
-                        type="text"
-                        value={this.state.fullname}
-                        id="fullname"
-                        onChange={this.update('fullname')}
-                        placeholder="Fullname"
-                        required />
-                </div>
-            );
+            // optionalInputField = (
+            //     <div className="login">
+            //         <input
+            //             className="login-input"
+            //             type="text"
+            //             value={this.state.fullname}
+            //             id="fullname"
+            //             onChange={this.update('fullname')}
+            //             placeholder="Fullname"
+            //             required />
+            //     </div>
+            // );
 
             password2Input = (
                 <div className="login">
