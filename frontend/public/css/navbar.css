@@ -1,0 +1,82 @@
+
+.left-bar{
+    height: 100vh;
+    width: 200px;
+}
+
+
+.main-nav-container{
+    /* position: relative; */
+    
+    height: 100%;
+    /* min-height: 720px; */
+    width: 100%;
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: center;
+}
+
+.nav-header{
+    height: 150px;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-scrollable{
+    /* height: 68%; */
+    height: 600px;
+    width: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+    overflow: hidden;
+    overflow: scroll;
+    
+    position: relative;
+}
+
+.nav-scrollable > a{
+    height: 10vh;
+    padding-left: 20px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.auth-buttons{
+    /* background-color: pink; */
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-collections{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+
+.nav-footer{
+    height: 80px;
+    width: 100%;
+    /* background-color:  blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
