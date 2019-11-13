@@ -1,101 +1,42 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import 'font-awesome/css/font-awesome.min.css';
-import LoggedOutNavbar from './logged_out_navbar';
-import LoggedInNavbar from './logged_in_navbar';
-import { logout } from '../../actions/session_actions';
-import { openModal } from '../../actions/modal_actions';
-import { fetchAllUsers } from '../../actions/users_actions';
-import { selectStoriesTitles } from '../../reducers/selectors';
-import SearchForm from '../search/search_form';
 
 class Navbar extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            hashesToCompare: {},
-            profileURL: "/favicon.ico"
-        };
-        this.handleSearchIconClick = this.handleSearchIconClick.bind(this);
-    }
 
-    componentDidMount() {
-        this.props.fetchStories().then((response) => {
-            this.props.storyTitlesArray.forEach(title => {
-                this.setState({
-                    hashesToCompare:
-                        Object.assign(this.state.hashesToCompare, {
-                            [title]: this.makeTitlesHash(title)
-                        })
-                });
-            });
-        });
-        this.props.fetchAllUsers();
-        if (!this.props.currentUser)
-            return;
-        this.props.fetchAll(this.props.currentUser.id)
-            .then(response => {
-                response.files = response.files || [];
-                response.files.forEach(obj => {
-                    if (obj.filename === "profile")
-                        this.setState({ profileURL: obj.URL });
-                });
-            });
-    }
-
-    handleSearchIconClick() {
-        const dropdown = document.getElementById("search-dropdown");
-        const searchBar = document.getElementById("searchBar");
-        dropdown.classList.toggle("active");
-        searchBar.classList.toggle("active");
-    }
-    makeTitlesHash(str) {
-        const hash = {};
-        str.split("").forEach(c => {
-            c = c.toLowerCase();
-            hash[c] = hash[c] || 0;
-            hash[c]++;
-        });
-        return hash;
-    }
-
-    render() {
-        let { navbar, openModal, logout, currentUser } = this.props;
-        const component = !navbar ? <LoggedOutNavbar openModal={openModal} /> : <LoggedInNavbar currentUser={currentUser} logout={logout} profileURL={this.state.profileURL} />
-
+    render(){
+        let { openModal, closeModal } = this.props;
         return (
-
-            <div className="navbar">
-                <ul className="navbar-left">
-                    <li className="logo"><a href="/">Modern</a></li>
-
-                    <li className="search" id="search-dropdown" >
-                        <i id="search-icon" className="fa fa-search" aria-hidden="true" onClick={this.handleSearchIconClick}></i>
-                        <SearchForm hashesToCompare={this.state.hashesToCompare} />
-                    </li>
-                </ul>
-                <ul className="navbar-right">
-                    {component}
-                </ul>
+            <div className="main-nav-container">
+                <div className="nav-header">
+                    <h1>My Recipe!</h1>
+                </div>
+                <div className="nav-scrollable">
+                    <div className="auth-buttons">
+                        <button onClick={() => openModal('login')}>Sign In</button>
+                        <button onClick={() => openModal('register')}>Sign Up</button>
+                    </div>
+                    <a href="">My Feed</a>
+                    <a href="">Articles</a>
+                    <a href="">Plan & Shop</a>
+                    <a href="">Browse</a>
+                    <a href="">My Recipe Pro</a>
+                    {/* <div className="nav-collections">
+                        <a href="">Saved Recipes</a>
+                        <div>New Collection</div>
+                        <div>All My Recipes</div>
+                        <div>Breakfasts</div>
+                        <div>Desserts</div>
+                        <div>Dinners</div>
+                        <div>Drinks</div>
+                        <div>Sides</div>
+                    </div> */}
+                </div>
+                <div className="nav-footer">
+                    <div className="dots">...</div>
+                    <button>More</button>
+                </div>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    const currentUser = state.session.currentUser;
-    let profileURL = currentUser && state.UI.files[currentUser.id] ? state.UI.files[currentUser.id] : "/favicon.ico"
-    return {
-        navbar: Boolean(currentUser),
-        currentUser: currentUser
-    };
-};
-
-const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout()),
-    openModal: (modal) => dispatch(openModal(modal)),
-    fetchAllUsers: () => dispatch(fetchAllUsers())
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));
+export default Navbar;
