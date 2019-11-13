@@ -10,10 +10,13 @@ export default class Profile extends Component {
 
                         </div>
                         <div className="profile-info">
-                            <h2>User Name</h2>
+                            <h1>User Name</h1>
                             <p>tell us about you here </p>
                             <div className="profile-social-media">
-
+                                <i class="fab fa-facebook-f"></i>
+                                <i class="fab fa-twitter"></i>
+                                <i class="fab fa-pinterest"></i>
+                                <i class="fas fa-globe-americas"></i>
                             </div>
                         </div>
                 </div>
@@ -50,7 +53,7 @@ export default class Profile extends Component {
                     <div className="profile-yum">
                     </div>
                 </div>
-                <h2>collections</h2>
+                <h2>Collections</h2>
                 <div className="profile-collections">
                     <div className="profile-yum">
                     </div>
