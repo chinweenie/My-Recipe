@@ -18,4 +18,9 @@ export const signup = userData => (
 
 export const logout = () => (
     axios.delete('/api/users/logout')
-)
+);
+
+export const googleAuth = () => {
+    console.log("hi");
+    return axios.get('/auth/google');
+};
