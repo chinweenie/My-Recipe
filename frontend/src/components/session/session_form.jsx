@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import queryString from "query-string";
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -11,16 +10,6 @@ class SessionForm extends React.Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
         this.handleDemoPassword = this.handleDemoPassword.bind(this);
-    }
-
-    componentDidMount() {
-        var query = queryString.parse(this.props.location.search);
-        console.log(this.props.location);
-        if (query.token) {
-            window.localStorage.setItem("jwt", query.token);
-            this.props.history.push("/");
-        }
-        console.log(query.token);
     }
 
     handleDemo(e) {
