@@ -25,3 +25,14 @@ Team members:
 
 * [Roger](https://github.com/yuichiu416)
 * [Winnie](https://github.com/chinweenie)
+* [Donnie](https://github.com/DonaldBatryn)
+
+Todo:
+1. Navbar(Donnie)
+2. Design recipe model(Winnie)
+3. Integrate Google register/log in(Roger)
+4. Create page for recipes (index/show page)
+5. Search form UI
+6. Search algorithm based on filters
+7. Shopping list UI
+8. Generate shopping algorithm based on recipes

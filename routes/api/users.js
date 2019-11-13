@@ -11,20 +11,24 @@ const validateLoginInput = require('../../validation/login');
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
-        username: req.user.username,
-        email: req.user.email
+        email: req.user.email,
+        password: req.user.password
     });
 })
+
+router.get('/', (req, res) => {
+    User.find().then(users => res.json(users));
+});
 
 // @route   POST api/users (create) 
 // @desc    register
 // @access  Public
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
+
     // Check to make sure nobody has already registered with a duplicate email
     User.findOne({ email: req.body.email })
         .then(user => {
@@ -34,11 +38,9 @@ router.post('/register', (req, res) => {
             } else {
                 // Otherwise create a new user
                 const newUser = new User({
-                    username: req.body.username,
                     email: req.body.email,
                     password: req.body.password
                 })
-
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err) throw err;
@@ -56,13 +58,10 @@ router.post('/register', (req, res) => {
 // @desc    login
 // @access  Public
 router.post('/login', (req, res) => {
-
     const { errors, isValid } = validateLoginInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    
     const email = req.body.email;
     const password = req.body.password;
 
@@ -75,8 +74,7 @@ router.post('/login', (req, res) => {
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if (isMatch) {
-                        const payload = { id: user.id, name: user.name };
-
+                        const payload = { id: user.id, email: user.email };
                         jwt.sign(
                             payload,
                             keys.secretOrKey,
@@ -94,7 +92,5 @@ router.post('/login', (req, res) => {
                 });
         })
 });
-
-
 
 module.exports = router;
