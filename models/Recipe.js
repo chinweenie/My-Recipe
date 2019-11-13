@@ -6,10 +6,27 @@ const RecipeSchema = new Schema({
         type: String,
         required: true
     },
-    ingredients: [{
-        type: Schema.Types.ObjectId,
-        ref: 'ingredients'
-    }],
+    ingredients: [
+        {
+            name: {
+                type: String,
+                required: true
+            },
+            quantity: {
+                type: Number,
+                required: true
+            },
+            unit: {
+                type: String,
+                required: true
+            },
+            category: {
+                // condiment, dairy, meat, produce, seafood
+                type: String,
+                required: true
+            }
+        }
+    ],
     steps: {
         type: String,
         required: true
@@ -23,24 +40,50 @@ const RecipeSchema = new Schema({
         required: true
     },
     tags: [{
-        type: String,
-        required: true
+        type: String
     }],
-    reviews: [{
-        type: Schema.Types.ObjectId,
-        ref: 'reviews'
-    }],
+    reviews: [
+        {
+            rating: {
+                type: Number,
+                required: true
+            },
+            body: {
+                type: String,
+                required: true
+            },
+            user: {
+                type: Schema.Types.ObjectId,
+                ref: 'users'
+            },
+        }
+    ],
     images: [{
         type: String
     }],
-    usersWhoFavoritedMe: [{
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    }],
+    usersWhoFavoritedMe: {
+        type: Map
+    },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'users'
-    }
+    },
+    nutritions: [
+        {
+            name: {
+                type: String,
+                required: true
+            },
+            quantity: {
+                type: Number,
+                required: true
+            },
+            unit: {
+                type: String,
+                required: true
+            }
+        }
+    ]
 })
 
 module.exports = Recipe = mongoose.model('recipes', RecipeSchema);

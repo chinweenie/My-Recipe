@@ -7,8 +7,23 @@ const ShoppingListSchema = new Schema({
         ref: 'users'
     },
     ingredients: [{
-        type: Schema.Types.ObjectId,
-        ref: 'ingredients'
+        name: {
+            type: String,
+            required: true
+        },
+        quantity: {
+            type: Number,
+            required: true
+        },
+        unit: {
+            type: String,
+            required: true
+        },
+        category: {
+            // condiment, dairy, meat, produce, seafood
+            type: String,
+            required: true
+        }
     }]
 })
 
