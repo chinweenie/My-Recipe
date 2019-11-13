@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
 const db = require('./config/keys').MONGO_URI;
+const mongoose = require('mongoose');
 const users = require("./routes/api/users");
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const path = require('path');
 const port = process.env.PORT || 5000;
+
+const path = require('path');
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
@@ -16,25 +17,17 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(passport.initialize());
-//We also need to setup a configuration file for Passport (add this after the previous line):
 require('./config/passport')(passport);
 
-
 mongoose
-    .connect(db, { useNewUrlParser: true })
+    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
 
-app.get("/", (req, res) => res.send("Hello World"));
-app.use("/api/users", users);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.all('*', (req, res) => {
-    console.log("Unknown route, bad request");
-    console.log(req.body);
-    return res.sendStatus(404);
-});
+app.use('/api/users', users);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
