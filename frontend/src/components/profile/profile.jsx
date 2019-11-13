@@ -2,6 +2,23 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 export default class Profile extends Component {
+    constructor(props){
+        super(props);
+        this.clickAddress = this.clickAddress.bind(this);
+    }
+    componentDidMount(){
+        document.addEventListener("click", (e) => {
+            this.clickAddress(e);
+        });
+    }
+    clickAddress(e){
+        let inputs = document.getElementsByTagName("input");
+        for(let i = 0; i < 3; i++){
+            inputs[i].size = Math.min(inputs[i].id.length || inputs[i].value.length);
+        }
+        if (e.target.tagName === "INPUT")
+            e.target.size = 12;
+    }
     render() {
         return (
             <div className="profile">
@@ -13,12 +30,18 @@ export default class Profile extends Component {
                             <h1>User Name</h1>
                             <p>tell us about you here </p>
                             <div className="profile-social-media">
-                                <i class="fab fa-facebook-f"></i>
-                                <i class="fab fa-twitter"></i>
-                                <i class="fab fa-pinterest"></i>
-                                <i class="fas fa-globe-americas"></i>
+                                <i className="fab fa-facebook-f"></i>
+                                <i className="fab fa-twitter"></i>
+                                <i className="fab fa-pinterest"></i>
+                                <i className="fas fa-globe-americas"></i>
+                                <div className="profile-address">
+                                    <input onClick={e => this.clickAddress(e)} size="4" placeholder="City" id="city" />,
+                                    <input onClick={e => this.clickAddress(e)} size="5" placeholder="State" id="state"/>,
+                                    <input onClick={e => this.clickAddress(e)} size="7" placeholder="Country" id="country"/>
+                                </div>
                             </div>
                         </div>
+                       
                 </div>
                 <div className="profile-tabs">
                     <Link to="/profile/userid">SAVED RECIPES</Link>
