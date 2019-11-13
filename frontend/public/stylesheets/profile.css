@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Asap:700|Barlow+Semi+Condensed|Kanit|Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Asap:700|Barlow+Semi+Condensed|Electrolize|Kanit|Nanum+Gothic&display=swap');
 
 .profile{
     margin: 5% 0 0 20%;
@@ -49,8 +49,21 @@
     padding: 20px;
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
-.profile-search{
+.profile-search i{
+    left: 35px;
+    padding: 10px;
+    position: relative;
+    transform: scaleX(-1);
+}
+.profile-search input{
     height: 25px;
+    padding-left: 35px;
+    border-radius: 30px;
+    width: 300px;
+    font-family: 'Electrolize', sans-serif;
+}
+.profile-search input:focus{
+  outline-width: 0;
 }
 .profile-yums{
     display: flex;

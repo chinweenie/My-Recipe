@@ -22,7 +22,12 @@ export default class Profile extends Component {
                     <Link to="/settings/preferences">PREFERENCES</Link>
                     <Link to="/settings">SETTINGS</Link>
                 </div>
-                <input className="profile-search" placeholder="Search My Yums" />
+                <div className="profile-search">
+                    <i className="fas fa-search"></i>
+                    <input placeholder="Search My Yums" />
+                </div>
+
+                
                 <h2>All Yums</h2>
                 <div className="profile-yums">
 
