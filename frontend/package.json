@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "http-proxy-middleware": "^0.20.0",
     "jwt-decode": "^2.2.0",
     "logger": "0.0.1",
+    "query-string": "^6.8.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-html-parser": "^2.0.2",
