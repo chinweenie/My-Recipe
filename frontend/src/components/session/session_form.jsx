@@ -18,7 +18,7 @@ class SessionForm extends React.Component {
             email: "",
             password: ""
         };
-        const email = 'admin@my_recipe.com'.split('');
+        const email = 'admin@myrecipe.com'.split('');
         this.handleDemoUsername(email);
     }
 
@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
             this.setState({ password: this.state.password + password.shift() }, () => {
                 if (password.length === 0) {
                     this.props.login(this.state)
-                        .then(() => this.props.fetchAllUsers())
+                        // .then(() => this.props.fetchAllUsers())
                         .then(() => this.props.history.push('/'));
                     this.props.closeModal();
                 } else {
