@@ -1,6 +1,9 @@
+@import 'reset.css';
 @import 'mainpage.css';
 @import 'navbar.css';
 @import 'search-tools.css';
+@import 'profile.css';
+@import 'general.css';
 
 *{
     box-sizing: border-box;
