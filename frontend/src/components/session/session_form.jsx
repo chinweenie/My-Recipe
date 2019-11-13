@@ -4,20 +4,20 @@ import { withRouter } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { email: "", username: "", password: "" };
+        this.state = { email: "", password: "", password2: ""};
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
+        this.handleDemoPassword = this.handleDemoPassword.bind(this);
     }
 
     handleDemo(e) {
         e.preventDefault();
-        this.state = {
-            username: "",
+        this.state = ({
             email: "",
             password: ""
-        };
+        });
         const email = 'admin@myrecipe.com'.split('');
         this.handleDemoUsername(email);
     }
@@ -133,24 +133,24 @@ class SessionForm extends React.Component {
 
         } else {
             sessionFormHeader = (
-                <heading className="signup-form-header">
+                <div className="signup-form-header">
                     <h1 className="form-heading">Join My Recipe.</h1>
                     <p className="form-bio">Create an account to receive great recipes in your inbox, personalize your grocer shopping list, and follow authors that you love.</p>
-                </heading>
-            );
-
-            optionalInputField = (
-                <div className="login">
-                    <input
-                        className="login-input"
-                        type="text"
-                        value={this.state.name}
-                        id="name"
-                        onChange={this.update('name')}
-                        placeholder="Fullname"
-                        required />
                 </div>
             );
+
+            // optionalInputField = (
+            //     <div className="login">
+            //         <input
+            //             className="login-input"
+            //             type="text"
+            //             value={this.state.fullname}
+            //             id="fullname"
+            //             onChange={this.update('fullname')}
+            //             placeholder="Fullname"
+            //             required />
+            //     </div>
+            // );
 
             password2Input = (
                 <div className="login">
