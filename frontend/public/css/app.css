@@ -4,10 +4,3 @@
 @import 'search-tools.css';
 @import 'profile.css';
 @import 'general.css';
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
-}
