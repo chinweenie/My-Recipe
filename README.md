@@ -34,5 +34,5 @@ Todo:
 4. Create page for recipes (index/show page)
 5. Search form UI
 6. Search algorithm based on filters
-7. Shopping list UI
-8. Generate shopping algorithm based on recipes
+7. Shopping list UI (Winnie)
+8. Generate shopping algorithm based on recipes (Winnie)

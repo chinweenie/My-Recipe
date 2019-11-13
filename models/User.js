@@ -13,7 +13,27 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    recipes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'recipes'
+    }],
+    favoritedUsers: [{
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    }],
+    favoritedRecipes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'recipes'
+    }],
+    shoppingLists: [{
+        type: Schema.Types.ObjectId,
+        ref: 'shoppinglists'
+    }],
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'reviews'
+    }]
 })
 
 module.exports = User = mongoose.model('users', UserSchema);

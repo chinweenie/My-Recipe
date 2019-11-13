@@ -6,8 +6,21 @@ const users = require("./routes/api/users");
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const port = process.env.PORT || 5000;
-
 const path = require('path');
+
+app.get(
+    "/auth/google",
+    passport.authenticate("google", { scope: ["profile", "email"] })
+);
+app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/", session: false }),
+    function (req, res) {
+        console.log("calling back");
+        var token = req.user.token;
+        res.redirect("http://localhost:3000/#/?token=" + token);
+    }
+);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));

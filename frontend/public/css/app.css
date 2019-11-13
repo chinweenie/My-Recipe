@@ -1,0 +1,10 @@
+@import 'mainpage.css';
+@import 'navbar.css';
+@import 'search-tools.css';
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
