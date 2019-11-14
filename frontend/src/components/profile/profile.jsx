@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import ProfileMain from './profile-main';
+import Preferences from './preferences';
+import Settings from './settings'
 
 export default class Profile extends Component {
     constructor(props){
@@ -12,7 +16,9 @@ export default class Profile extends Component {
         });
     }
     clickAddress(e){
-        let inputs = document.getElementsByTagName("input");
+        let inputs = document.getElementsByName("address");
+        if(!inputs || inputs.length < 1)
+            return;
         for(let i = 0; i < 3; i++){
             inputs[i].size = Math.min(inputs[i].id.length || inputs[i].value.length);
         }
@@ -41,9 +47,9 @@ export default class Profile extends Component {
                                 <i className="fab fa-pinterest"></i>
                                 <i className="fas fa-globe-americas"></i>
                                 <div className="profile-address">
-                                    <input onClick={e => this.clickAddress(e)} size="4" placeholder="City" id="city" />,
-                                    <input onClick={e => this.clickAddress(e)} size="5" placeholder="State" id="state"/>,
-                                    <input onClick={e => this.clickAddress(e)} size="7" placeholder="Country" id="country"/>
+                                    <input onClick={e => this.clickAddress(e)} size="4" placeholder="City" name="address" id="city" />,
+                                    <input onClick={e => this.clickAddress(e)} size="5" placeholder="State" name="address" id="state"/>,
+                                    <input onClick={e => this.clickAddress(e)} size="7" placeholder="Country" name="address" id="country"/>
                                 </div>
                             </div>
                         </div>
@@ -51,58 +57,14 @@ export default class Profile extends Component {
                 </div>
                 <div className="profile-tabs">
                     <Link to="/profile/userid">SAVED RECIPES</Link>
-                    <Link to="/settings/preferences">PREFERENCES</Link>
-                    <Link to="/settings">SETTINGS</Link>
+                    <Link to="/profile/settings/preferences">PREFERENCES</Link>
+                    <Link to="/profile/settings">SETTINGS</Link>
                 </div>
-                <div className="profile-search">
-                    <i className="fas fa-search"></i>
-                    <input placeholder="Search My Yums" />
-                </div>
-
-                
-                <h2>All Yums</h2>
-                <div className="profile-yums">
-
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                </div>
-                <h2>Collections</h2>
-                <div className="profile-collections">
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                    <div className="profile-yum">
-                    </div>
-                </div>
+                <Switch>
+                    <Route path="/profile" component={ProfileMain} />
+                    <Route exact path="/profile/settings/preferences" component={Preferences} />
+                    <Route exact path="/profile/settings" component={Settings} />
+                </Switch>
             </div>
         )
     }
