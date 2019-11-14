@@ -61,9 +61,9 @@ export default class Profile extends Component {
                     <Link to="/profile/settings">SETTINGS</Link>
                 </div>
                 <Switch>
-                    <Route path="/profile" component={ProfileMain} />
                     <Route exact path="/profile/settings/preferences" component={Preferences} />
                     <Route exact path="/profile/settings" component={Settings} />
+                    <Route path="/profile" component={ProfileMain} />
                 </Switch>
             </div>
         )
