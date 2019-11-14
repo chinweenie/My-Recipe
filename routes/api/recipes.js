@@ -149,11 +149,19 @@ router.patch('/favorite/:recipeId', passport.authenticate('jwt', { session: fals
 
         const users = recipe.usersWhoFavoritedMe;
         const user = users.get(req.user.id);
-        
+        const currentUser = await user.findById(req.user.id);
+
         if (user){
             users.delete(req.user.id);
+            currentUser.favoritedRecipes.filter(recipeId => {
+                if (recipeId.toString() === req.params.recipeId) {
+                    const removeIndex = currentUser.favoritedRecipes.indexOf(recipeId);
+                    currentUser.favoritedRecipes.splice(removeIndex, 1);
+                }
+            })
         } else {
             users.set(req.user.id, true);
+            currentUser.favoritedRecipes.unshift({ recipeId: req.params.recipeId });
         }
 
         await recipe.save();
@@ -170,6 +178,7 @@ router.patch('/favorite/:recipeId', passport.authenticate('jwt', { session: fals
 // @desc   Add a review to the recipe
 // @access Private
 router.post('/reviews/:recipeId', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    debugger
     const { errors, isValid } = validateReviewInput(req.body);
 
     if (!isValid) {
@@ -181,7 +190,11 @@ router.post('/reviews/:recipeId', passport.authenticate('jwt', { session: false 
         const recipe = await Recipe.findById(req.params.recipeId);
         if (!recipe) return res.status(404).json({ 'msg': 'Recipe not found' });
         
-        recipe.reviews.unshift(req.body.review);
+        recipe.reviews.unshift({
+            rating: req.body.rating,
+            body: req.body.body,
+            user: req.user.id
+        });
         await recipe.save();
         res.json(recipe.reviews);
     } catch (err) {
