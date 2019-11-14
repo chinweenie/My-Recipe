@@ -36,8 +36,6 @@ export default class Profile extends Component {
                                 <i className="fa fa-pencil fa-lg"></i>
                             </div>
                             <div className="profile-social-media">
-                                <i className="fa fa-pencil fa-lg"></i>
-
                                 <i className="fab fa-facebook-f"></i>
                                 <i className="fab fa-twitter"></i>
                                 <i className="fab fa-pinterest"></i>
