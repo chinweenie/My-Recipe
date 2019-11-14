@@ -14,27 +14,40 @@ module.exports = function validateRecipeInput(data){
         errors.body = 'Serving field is required';
     }
 
-    if (!Validator.isNumeric(data.serving)){
-        errors.body = 'Serving must be a number';
-    }
-
-    if (data.serving <= 0){
-        errors.body = 'Serving must be more than zero';
-    }
-
     if (Validator.isEmpty(data.time)) {
         errors.body = 'Time field is required';
     }
 
-    if (!Validator.isNumeric(data.time)){
-        errors.body = 'Time must be a number';
+    if (data.ingredients){
+        data.ingredients.forEach(ingredient => {
+            if (Validator.isEmpty(ingredient.name)) {
+                errors.title = 'Ingredient name field is required';
+            };
+            if (Validator.isEmpty(ingredient.quantity)) {
+                errors.title = 'Ingredient quantity field is required';
+            };
+            if (Validator.isEmpty(ingredient.unit)) {
+                errors.title = 'Ingredient unit field is required';
+            };
+            if (Validator.isEmpty(ingredient.category)) {
+                errors.title = 'Ingredient Ccategory field is required';
+            };
+        });
     }
 
-    if (data.time <= 0) {
-        errors.body = 'Time must be more than zero';
+    if (data.nutritions){
+        data.nutritions.forEach(nutrition => {
+            if (Validator.isEmpty(nutrition.name)) {
+                errors.title = 'Nutrition Name field is required';
+            };
+            if (Validator.isEmpty(nutrition.quantity)) {
+                errors.title = 'Nutrition Quantity field is required';
+            };
+            if (Validator.isEmpty(nutrition.unit)) {
+                errors.title = 'Nutrition Unit field is required';
+            };
+        })
     }
-
-    
 
     return {
         errors,

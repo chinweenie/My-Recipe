@@ -11,14 +11,9 @@ const validateReviewInput = require('../../validation/review');
 router.get('/', async (req, res) => {
     try {
         const recipes = await Recipe.find()
-            .populate('usersWhoFavoritedMe')
-            .populate('nutritions')
             .populate('author')
-            .populate('reviews')
-            .populate('ingredients')
             .sort({ date: -1 });
 
-    
         res.json(recipes);
     } catch (err) {
         console.log(err.message);
@@ -33,12 +28,7 @@ router.get('/:recipeId', async (req, res) => {
     try {
         const recipe = await Recipe.findById (req.params.recipeId);
         if (!recipe) return res.status(404).json({ 'msg': 'Recipe not found' });
-
         recipe.populate('author');
-        recipe.populate('usersWhoFavoritedMe');
-        recipe.populate('nutritions');
-        recipe.populate('reviews');
-        recipe.populate('ingredients');
         res.json(recipe);
     } catch (err) {
         console.log(err.message);
@@ -50,6 +40,7 @@ router.get('/:recipeId', async (req, res) => {
 // @desc    Create a new recipe
 // @access  Private
 router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    debugger
     const { errors, isValid } = validateRecipeInput(req.body);
     if (!isValid) return res.status(422).json(errors);
 
@@ -60,10 +51,10 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
         const steps = req.body.steps;
         const serving = req.body.serving;
         const time = req.body.time;
-        const images = req.body.images;
-        const ingredients = req.body.ingredients;
-        const tags = req.body.tags;
-        const nutritions = req.body.nutritions;
+        const images = req.body.images || [];
+        const ingredients = req.body.ingredients || [];
+        const tags = req.body.tags || [];
+        const nutritions = req.body.nutritions || [];
         
         const newRecipe = await new Recipe({ 
             author,
@@ -95,19 +86,24 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
 // @desc    Update a recipe
 // @access  private
 router.patch('/:recipeId', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    debugger
     const { errors, isValid } = validateRecipeInput(req.body);
     if (!isValid) return res.status(400).json(errors);
-
+    debugger
     try {
         const recipe = await Recipe.findById(req.params.recipeId);
+
+        const images = req.body.images || [];
+        const ingredients = req.body.ingredients || [];
+        const tags = req.body.tags || [];
+        const nutritions = req.body.nutritions || [];
+        
         if (!recipe) return res.status(404).json({ 'msg': 'Recipe not found' });
-
-        recipe.author = req.user.id;
-        recipe.name = req.body.name;
-        recipe.steps = req.body.steps;
-        recipe.serving = req.body.serving;
-        recipe.time = req.body.time;
-
+        if (req.body.name) recipe.name = req.body.name;
+        if (req.body.steps) recipe.steps = req.body.steps;
+        if (req.body.serving) recipe.serving = req.body.serving;
+        if (req.body.time) recipe.time = req.body.time;
+  
         images.forEach(image => recipe.images.push(image));
 
         ingredients.forEach(ingredient => recipe.ingredients.push(ingredient));
@@ -191,3 +187,6 @@ router.post('/reviews/:recipeId', passport.authenticate('jwt', { session: false 
         res.status(500).send({ 'msg': err.message });
     }
 });
+
+
+module.exports = router;
