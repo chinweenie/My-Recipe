@@ -61,7 +61,8 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
             name,
             steps,
             serving,
-            time
+            time,
+            usersWhoFavoritedMe: {}
         });
 
         
@@ -142,6 +143,7 @@ router.delete('/recipeId', passport.authenticate('jwt', { session: false }), asy
 // @access Private
 router.patch('/favorite/:recipeId', passport.authenticate('jwt', { session: false }), async (req, res) => {
     try {
+        debugger
         const recipe = await Recipe.findById(req.params.recipeId);
         if (!recipe) return res.status(404).json({ 'msg': 'Recipe not found' });
 
