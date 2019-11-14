@@ -18,18 +18,35 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'recipes'
     }],
-    favoritedUsers: [{
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    }],
-    favoritedRecipes: [{
-        type: Schema.Types.ObjectId,
-        ref: 'recipes'
-    }],
-    shoppingLists: [{
-        type: Schema.Types.ObjectId,
-        ref: 'shoppinglists'
-    }],
+    favoritedRecipes: [
+        {
+            recipeId: {
+                type: Schema.Types.ObjectId,
+                ref: 'recipes'
+            }
+        }
+    ],
+    shoppingLists: [
+        {
+            name: {
+                type: String,
+                required: true
+            },
+            quantity: {
+                type: Number,
+                required: true
+            },
+            unit: {
+                type: String,
+                required: true
+            },
+            category: {
+                // condiment, dairy, meat, produce, seafood
+                type: String,
+                required: true
+            }
+        }
+    ],
     reviews: [{
         type: Schema.Types.ObjectId,
         ref: 'reviews'
