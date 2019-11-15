@@ -10,21 +10,21 @@ export default class Settings extends Component {
                         <div className="preference-row">
                             <div className="preference-row-item">
                                 <div>+
-                            <p>GENDER</p>
+                                    <p>GENDER</p>
                                 </div>
                             </div>
                         </div>
                         <div className="preference-row">
                             <div className="preference-row-item">
                                 <div>+
-                            <p>SKILLS</p>
+                                    <p>SKILLS</p>
                                 </div>
                             </div>
                         </div>
                         <div className="preference-row">
                             <div className="preference-row-item">
                                 <div>+
-                            <p>HOUSEHOLD SIZE</p>
+                                    <p>HOUSEHOLD SIZE</p>
                                 </div>
                             </div>
                         </div>
