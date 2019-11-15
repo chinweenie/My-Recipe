@@ -38,6 +38,10 @@ a {
     display: flex;
     flex-direction: row;
 }
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
 .confirm-btn{
     display: inline-block;
     background-color: green;

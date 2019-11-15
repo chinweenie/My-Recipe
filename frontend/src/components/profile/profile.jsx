@@ -22,7 +22,7 @@ export default class Profile extends Component {
         for(let i = 0; i < 3; i++){
             inputs[i].size = Math.min(inputs[i].id.length || inputs[i].value.length);
         }
-        if (e.target.tagName === "INPUT")
+        if (e.target.tagName === "INPUT" && e.target.name === "address")
             e.target.size = 12;
     }
     render() {
