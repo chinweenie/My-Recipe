@@ -66,3 +66,9 @@ a {
     border-radius: 20px;
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
+strong{
+    font-weight: bold;
+}
+.align-self-center{
+    align-self: center;
+}
