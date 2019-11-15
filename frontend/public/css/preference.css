@@ -9,9 +9,9 @@
 }
 .preference p{
     font-family: 'Tinos', serif;
+    margin-bottom: 30px;
 }
 .preference-row-item{
-    margin-top: 50px;
     width: 150px;
     height: 150px;
     border-radius: 100%;
