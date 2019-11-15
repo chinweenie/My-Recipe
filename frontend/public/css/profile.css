@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Asap:700|Barlow+Semi+Condensed|Electrolize|Kanit|Mitr|Nanum+Gothic|Nunito&display=swap');
 .profile{
     margin: 5% 0 0 20%;
-    width: 100%;
+    max-width: 80%;
 }
 .profile h1{
     font-size: 48px;
@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: row;
     background-color: aliceblue;
-    width: 80%;
+    max-width: 80%;
 }
 .profile-picture{
     height: 150px;

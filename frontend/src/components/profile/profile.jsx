@@ -30,7 +30,6 @@ export default class Profile extends Component {
             <div className="profile">
                 <div className="profile-header">
                         <div className="profile-picture">
-
                         </div>
                         <div className="profile-info">
                         <div className="edit profile-name">
