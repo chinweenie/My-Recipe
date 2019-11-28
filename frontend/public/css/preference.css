@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Rajdhani|Tinos&display=swap');
 
 .preference{
-    display: flex;
-    flex-direction: column;
+    display: grid;
 }
 .preference h2{
     font-family: 'Rajdhani', sans-serif;
@@ -18,8 +17,7 @@
     border-width: 10px;
     border-style: solid;
     border-color: lightgray;
-    display: flex;
-    flex-direction: column;
+    display: grid;
     cursor: pointer;
     transition: border-color 0.5s;
 }
