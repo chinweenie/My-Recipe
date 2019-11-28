@@ -1,11 +1,9 @@
 .settings{
-    display: flex;
-    flex-direction: column;
+    display: grid;
 }
 
 .settings-flex-item{
-    display: flex;
-    flex-direction: column;
+    display: grid;
 }
 .settings-flex-item.preference-row{
     margin: auto;
