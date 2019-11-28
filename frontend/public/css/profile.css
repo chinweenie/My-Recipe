@@ -2,6 +2,8 @@
 .profile{
     margin: 5% 0 0 20%;
     max-width: 80%;
+    display: grid;
+    grid-auto-rows: auto;
 }
 .profile h1{
     font-size: 48px;
@@ -13,10 +15,11 @@
     margin: 20px 0;
 }
 .profile-header{
-    display: flex;
-    flex-direction: row;
+    display: grid;
     background-color: aliceblue;
     max-width: 80%;
+    grid-template-columns: 150px auto;
+    grid-template-rows: repeat(3, auto);
 }
 .profile-picture{
     height: 150px;
@@ -27,8 +30,7 @@
     margin: auto 20px auto 0;
 }
 .profile-info{
-    display: flex;
-    flex-direction: column;
+    display: grid;
     background-color: antiquewhite;
 }
 .profile-info h2{
@@ -77,8 +79,8 @@
     margin: auto;
 }
 .profile-tabs{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 150px));
     height: 50px;
     top: 20px;
     color: aquamarine;
@@ -116,9 +118,7 @@
   outline-width: 0;
 }
 .profile-yums{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
 }
 .profile-yum{
     height: 150px;
@@ -127,7 +127,5 @@
     border: black solid;
 }
 .profile-collections{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
 }
