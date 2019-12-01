@@ -22,9 +22,9 @@ class MainPage extends React.Component {
                     <NavbarContainer />
                 </div>
                 <div className="main-content">
-                    <SearchToolsContainer />
                     <Switch>
                         <Route path="/profile" component={Profile} />
+                        <Route path="/" component={SearchToolsContainer} />
                         {/* <AuthRoute exact path="/login" component={LoginFormContainer}/>
             <AuthRoute exact path="/register" component={SignupFormContainer}/>  */}
                     </Switch>

@@ -17,7 +17,7 @@
 .profile-header{
     display: grid;
     background-color: aliceblue;
-    max-width: 80%;
+    width: fit-content; 
     grid-template-columns: 150px auto;
     grid-template-rows: repeat(3, auto);
 }
