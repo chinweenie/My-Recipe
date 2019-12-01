@@ -12,7 +12,6 @@
     grid-template-rows: repeat(5, minmax(0, 300));
     align-items: center;
 }
-
 .nav-section1{
     width: 100%;
     display: grid;
@@ -42,6 +41,7 @@
 .nav-section2 a{
     margin: 5px 0;
     font-size: 14px;
+    width: fit-content;
 }
 .nav-section3{
     grid-row: 3;
@@ -52,6 +52,7 @@
 .nav-section3 a{
     margin: 5px 0;
     font-size: 12px;
+    width: fit-content;
 }
 .nav-section3 a:first-child{
     font-size: 15px;
@@ -60,7 +61,6 @@
 .nav-section4{
     grid-row: 4;
     margin-left: 15px;
-
 }
 .nav-section5{
     width: 50px;
