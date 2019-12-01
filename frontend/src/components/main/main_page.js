@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import NavbarContainer from '../navbar/navbar_container';
 import SearchToolsContainer from '../search/search_tools_container';
+import { Switch, Route } from 'react-router-dom';
+import Profile from '../profile/profile';
 
 class MainPage extends React.Component {
 
@@ -21,6 +23,11 @@ class MainPage extends React.Component {
                 </div>
                 <div className="main-content">
                     <SearchToolsContainer />
+                    <Switch>
+                        <Route path="/profile" component={Profile} />
+                        {/* <AuthRoute exact path="/login" component={LoginFormContainer}/>
+            <AuthRoute exact path="/register" component={SignupFormContainer}/>  */}
+                    </Switch>
                 </div>
             </div>
         );

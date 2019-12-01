@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
 
@@ -6,33 +7,34 @@ class Navbar extends React.Component {
         let { openModal, closeModal } = this.props;
         return (
             <div className="main-nav-container">
-                <div className="nav-header">
-                    <h1>My Recipe!</h1>
+                <div className="nav-section1">
+                    <Link to="/"><img src="logo.png" alt="logo" /></Link>
+                    <Link to="/profile"><div className="nav-profile-picture"></div></Link>
                 </div>
-                <div className="nav-scrollable">
-                    <div className="auth-buttons">
-                        <button onClick={() => openModal('login')}>Sign In</button>
-                        <button onClick={() => openModal('register')}>Sign Up</button>
-                    </div>
-                    <a href="">My Feed</a>
+                <div className="nav-section2">
+                    <Link to="/profile">My Feed</Link>
                     <a href="">Articles</a>
                     <a href="">Plan & Shop</a>
                     <a href="">Browse</a>
                     <a href="">My Recipe Pro</a>
-                    {/* <div className="nav-collections">
-                        <a href="">Saved Recipes</a>
-                        <div>New Collection</div>
-                        <div>All My Recipes</div>
-                        <div>Breakfasts</div>
-                        <div>Desserts</div>
-                        <div>Dinners</div>
-                        <div>Drinks</div>
-                        <div>Sides</div>
-                    </div> */}
                 </div>
-                <div className="nav-footer">
-                    <div className="dots">...</div>
-                    <button>More</button>
+                <div className="nav-section3">
+                    <a href="">Saved Recipes</a>
+                    <Link to="/"><i className="fas fa-plus"></i>&nbsp;New Collection</Link>
+                    <Link to="/"><i className="far fa-folder">&nbsp;All My Recipes</i></Link>
+                    <Link to="/"><i className="far fa-folder">&nbsp;Breakfasts</i></Link>
+                    <Link to="/"><i className="far fa-folder">&nbsp;Desserts</i></Link>
+                    <Link to="/"><i className="far fa-folder">&nbsp;Dinners</i></Link>
+                    <Link to="/"><i className="far fa-folder">&nbsp;Drinks</i></Link>
+                    <Link to="/"><i className="far fa-folder">&nbsp;Sides</i></Link>
+                    <Link to="/"><i className="far fa-folder">&nbsp;Drinks</i></Link>
+                </div>
+                <div className="nav-section4">
+
+                </div>
+                <div className="nav-section5">
+                    <div>...</div>
+                    <div>More</div>
                 </div>
             </div>
         )
